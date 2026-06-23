@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QRID Premium</title>
+<style>
+body{margin:0;background:#000;color:#fff;font-family:Arial,sans-serif;padding:20px}
+.container{max-width:700px;margin:auto;text-align:center}
+#timer{font-size:72px;font-weight:bold;margin:15px 0}
+.qr{background:#fff;padding:15px;border-radius:20px;display:inline-block}
+.qr img{width:300px;max-width:100%}
+.box{background:#111;border:1px solid #333;border-radius:16px;padding:20px;margin-top:20px}
+.price{font-size:34px;font-weight:bold;color:#22c55e}
+.warning{display:none;background:#3a0000;color:#ff7777;padding:12px;border-radius:12px;margin:15px 0;animation:blink .8s infinite}
+@keyframes blink{50%{opacity:.4}}
+input[type=file]{width:100%;padding:10px;background:#000;color:#fff;border:1px solid #333;border-radius:10px}
+.check{display:flex;gap:10px;text-align:left;margin-top:20px}
+button{width:100%;padding:16px;border:none;border-radius:12px;background:#444;color:#999;margin-top:20px}
+button.active{background:#22c55e;color:#fff}
+.loading{display:none;position:fixed;inset:0;background:#000;z-index:9999;justify-content:center;align-items:center;flex-direction:column}
+.loader{width:90px;height:90px;border:6px solid #222;border-top:6px solid #22c55e;border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{100%{transform:rotate(360deg)}}
+.progress{width:80%;max-width:500px;height:10px;background:#222;border-radius:20px;overflow:hidden;margin-top:20px}
+.bar{height:100%;width:0;background:#22c55e}
+</style>
+</head>
+<body>
+<div class="container">
+<div>BATAS WAKTU PEMBAYARAN</div>
+<div id="timer">01:00</div>
+
+<div id="warning" class="warning">⚠️ Segera selesaikan pembayaran sebelum waktu habis.</div>
+
+<div class="qr"><img src="qris-pembayaran.png" alt="QRIS"></div>
+
+<div class="box">
+<h3>DETAIL PEMESANAN</h3>
+<p><b>Jenis Tiket:</b> <span id="jenisTiket">-</span></p>
+<p><b>Jumlah Tiket:</b> <span id="jumlahTiket">0</span></p>
+<div class="price">Rp <span id="totalBayar">0</span></div>
+</div>
+
+<div class="box">
+<h3>Upload Bukti Pembayaran</h3>
+<input type="file" id="proofFile" accept="image/*,.pdf">
+</div>
+
+<div class="check">
+<input type="checkbox" id="agree">
+<label>Saya menyatakan telah melakukan pembayaran sesuai nominal yang tertera.</label>
+</div>
+
+<button id="confirmBtn" disabled>Konfirmasi Pembayaran</button>
+</div>
+
+<div class="loading" id="loading">
+<div class="loader"></div>
+<h2>Memverifikasi Pembayaran</h2>
+<p>Mohon tunggu...</p>
+<div class="progress"><div class="bar" id="bar"></div></div>
+</div>
+
+<script>
+document.getElementById("jenisTiket").textContent=localStorage.getItem("jenisTiket")||"-";
+document.getElementById("jumlahTiket").textContent=localStorage.getItem("jumlahTiket")||"0";
+document.getElementById("totalBayar").textContent=new Intl.NumberFormat('id-ID').format(localStorage.getItem("totalPembayaran")||localStorage.getItem("total_bayar")||0);
+
+let totalSeconds=60;
+const timer=document.getElementById("timer");
+function draw(){
+let m=Math.floor(totalSeconds/60),s=totalSeconds%60;
+timer.textContent=String(m).padStart(2,'0')+":"+String(s).padStart(2,'0');
+}
+draw();
+
+const cd=setInterval(()=>{
+totalSeconds--;
+draw();
+if(totalSeconds===15) document.getElementById("warning").style.display="block";
+if(totalSeconds<=10) timer.style.color="#ff4444";
+if(totalSeconds<=0){clearInterval(cd);location.href="failed.html";}
+},1000);
+
+const agree=document.getElementById("agree");
+const btn=document.getElementById("confirmBtn");
+agree.onchange=()=>{
+btn.disabled=!agree.checked;
+btn.classList.toggle("active",agree.checked);
+};
+
+btn.onclick=()=>{
+if(document.getElementById("proofFile").files.length===0){
+alert("Upload bukti pembayaran terlebih dahulu.");
+return;
+}
+clearInterval(cd);
+document.getElementById("loading").style.display="flex";
+let p=0;
+const iv=setInterval(()=>{
+p++;
+document.getElementById("bar").style.width=p+"%";
+if(p>=100){
+clearInterval(iv);
+location.href="success.html";
+}
+},1200);
+};
+</script>
+</body>
+</html>

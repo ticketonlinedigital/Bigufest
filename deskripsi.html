@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<meta content="BIGU FESTIVAL 2026 - Festival Musik dan Piknik terbesar persembahan Bigu Creative." name="description"/>
+<meta content="#1736b8" name="theme-color"/>
+<title>BIGU FESTIVAL 2026 - Deskripsi Event</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Poppins,sans-serif;background:#f5f7ff;color:#0f172a}
+.top{position:fixed;top:0;left:0;width:100%;height:82px;background:#1736b8;display:flex;justify-content:space-between;align-items:center;padding:0 18px;z-index:999}
+.logo img{height:42px}
+.nav-right{display:flex;gap:10px}
+.nav-btn,.lang-btn{border:none;background:#2d4de0;color:#fff;border-radius:14px;height:50px;padding:0 16px;cursor:pointer}
+.nav-btn{width:50px}
+.main{padding-top:82px}
+.banner img{width:100%;display:block;border-bottom-left-radius:24px;border-bottom-right-radius:24px}
+.wrap{max-width:1000px;margin:auto;padding:50px 40px 120px}
+.tag{display:inline-block;background:#e6ebff;color:#3556ff;padding:10px 14px;border-radius:12px;font-weight:600}
+h1{margin:16px 0 20px;font-size:34px}
+.detail-card,.fac,.talent{background:#fff;border-radius:20px;box-shadow:0 8px 25px rgba(0,0,0,.06)}
+.detail-card{padding:20px;margin-top:25px}
+.item{display:flex;align-items:center;gap:18px;padding:20px 0;font-size:17px;border-bottom:1px solid #eee}
+.item:last-child{border:none}
+.tabs{display:flex;gap:40px;overflow:auto;margin:50px 0 35px;padding-bottom:15px;border-bottom:1px solid #e5e7eb}
+.tab{padding:10px 0;cursor:pointer;white-space:nowrap}
+.tab.active{color:#3556ff;border-bottom:3px solid #3556ff;font-weight:700}
+.tab-content{display:none;line-height:2;font-size:17px}
+.active-content{display:block;animation:fade .3s ease}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.talent{display:flex;align-items:center;padding:14px;margin:14px 0}
+.talent img{width:70px;height:70px;border-radius:12px;margin-right:12px;object-fit:cover}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.fac{padding:18px}
+.social{display:flex;gap:10px;margin-top:12px}
+.social a{text-decoration:none;background:#eef2ff;padding:10px 14px;border-radius:999px}
+.price-card{position:sticky;bottom:0;background:#fff;padding:18px;border-top:1px solid #ddd}
+.btn{display:block;text-align:center;text-decoration:none;background:linear-gradient(135deg,#4160ff,#1736b8);color:#fff;padding:16px;border-radius:16px;font-weight:700}
+@media(max-width:768px){
+.wrap{padding:35px 22px 120px}
+h1{font-size:28px}
+.grid{grid-template-columns:1fr}
+}
+
+html{scroll-behavior:smooth}
+body{background:linear-gradient(180deg,#f5f7ff,#eef3ff)!important}
+.top{background:rgba(23,54,184,.92)!important;backdrop-filter:blur(12px);box-shadow:0 10px 30px rgba(0,0,0,.15)}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+.hero-stats div{background:#fff;padding:16px;border-radius:16px;text-align:center;box-shadow:0 8px 25px rgba(0,0,0,.06)}
+.talent,.fac,.detail-card{transition:.3s}
+.talent:hover,.fac:hover,.detail-card:hover{transform:translateY(-4px)}
+.btn{box-shadow:0 15px 35px rgba(65,96,255,.35);animation:pulse 2s infinite}
+@keyframes pulse{50%{transform:scale(1.02)}}
+
+
+.logo{display:flex;align-items:center;height:60px}
+.logo img{height:56px;width:auto;object-fit:contain}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-btn,.lang-btn{
+width:56px;height:56px;padding:0;
+display:flex;align-items:center;justify-content:center;
+font-size:20px;border-radius:16px;
+}
+.top{
+height:88px;
+display:flex;align-items:center;
+}
+.main{padding-top:88px}
+.page-footer-brand{
+background:#1736b8;
+padding:30px 20px;
+display:flex;justify-content:center;
+margin-bottom:90px;
+}
+.page-footer-brand img{
+max-width:100%;
+width:320px;
+height:auto;
+}
+.page-transition{
+position:fixed;inset:0;background:#1736b8;
+transform:translateX(-100%);
+pointer-events:none;z-index:9999;
+transition:.45s ease;
+}
+.page-transition.show{transform:translateX(0)}
+.scroll-top{
+position:fixed;right:18px;bottom:18px;
+width:56px;height:56px;border:none;
+border-radius:50%;background:#1736b8;color:#fff;
+cursor:pointer;z-index:999;
+box-shadow:0 10px 25px rgba(0,0,0,.2)
+}
+
+
+/* NAVBAR PRO */
+.top{
+height:78px!important;
+padding:0 14px!important;
+display:flex!important;
+align-items:center!important;
+justify-content:space-between!important;
+}
+.logo{
+display:flex!important;
+align-items:center!important;
+flex:1;
+min-width:0;
+}
+.logo img{
+height:52px!important;
+max-width:100%;
+object-fit:contain;
+}
+.nav-right{
+display:flex!important;
+align-items:center!important;
+gap:8px!important;
+}
+.lang-btn,.nav-btn{
+width:52px!important;
+height:52px!important;
+border-radius:14px!important;
+background:rgba(255,255,255,.14)!important;
+backdrop-filter:blur(8px);
+box-shadow:0 4px 16px rgba(0,0,0,.12);
+}
+@media(max-width:768px){
+.top{height:74px!important;padding:0 10px!important;}
+.logo img{height:46px!important;}
+.lang-btn,.nav-btn{width:46px!important;height:46px!important;font-size:18px!important;}
+}
+
+
+/* NAVBAR ONLY PRO MAX */
+.top{
+height:72px!important;
+padding:0 16px!important;
+background:rgba(23,54,184,.96)!important;
+backdrop-filter:blur(18px)!important;
+-webkit-backdrop-filter:blur(18px)!important;
+box-shadow:0 8px 24px rgba(0,0,0,.18)!important;
+}
+
+.logo{
+display:flex!important;
+align-items:center!important;
+height:100%!important;
+}
+
+.logo img{
+height:48px!important;
+width:48px!important;
+object-fit:contain!important;
+}
+
+.nav-right{
+display:flex!important;
+align-items:center!important;
+gap:10px!important;
+}
+
+.lang-btn,.nav-btn{
+width:48px!important;
+height:48px!important;
+padding:0!important;
+display:flex!important;
+align-items:center!important;
+justify-content:center!important;
+border-radius:14px!important;
+border:1px solid rgba(255,255,255,.12)!important;
+background:rgba(255,255,255,.10)!important;
+color:#fff!important;
+transition:.25s ease!important;
+}
+
+.lang-btn:hover,.nav-btn:hover{
+transform:translateY(-2px)!important;
+background:rgba(255,255,255,.18)!important;
+}
+
+.main{padding-top:72px!important;}
+
+@media (max-width:768px){
+.top{height:68px!important;padding:0 12px!important;}
+.logo img{height:44px!important;width:44px!important;}
+.lang-btn,.nav-btn{width:44px!important;height:44px!important;}
+.main{padding-top:68px!important;}
+}
+
+
+/* NAVBAR PIXEL PERFECT */
+.top{
+height:72px!important;
+padding:0 18px!important;
+display:flex!important;
+align-items:center!important;
+justify-content:space-between!important;
+}
+
+.logo{
+display:flex!important;
+align-items:center!important;
+justify-content:flex-start!important;
+height:48px!important;
+}
+
+.logo img{
+width:48px!important;
+height:48px!important;
+display:block!important;
+object-fit:contain!important;
+}
+
+.nav-right{
+display:flex!important;
+align-items:center!important;
+justify-content:center!important;
+gap:8px!important;
+}
+
+.lang-btn,.nav-btn{
+width:48px!important;
+height:48px!important;
+min-width:48px!important;
+min-height:48px!important;
+padding:0!important;
+display:flex!important;
+align-items:center!important;
+justify-content:center!important;
+line-height:1!important;
+}
+
+@media (max-width:768px){
+.top{
+height:68px!important;
+padding:0 12px!important;
+}
+.logo{
+height:44px!important;
+}
+.logo img{
+width:44px!important;
+height:44px!important;
+}
+.lang-btn,.nav-btn{
+width:44px!important;
+height:44px!important;
+min-width:44px!important;
+min-height:44px!important;
+}
+}
+
+
+/* NAVBAR OPTICAL ALIGNMENT */
+.logo{
+min-width:56px!important;
+display:flex!important;
+align-items:center!important;
+justify-content:center!important;
+}
+
+.logo img{
+width:auto!important;
+height:42px!important;
+max-width:56px!important;
+object-fit:contain!important;
+transform:translateY(-1px)!important; /* optical center */
+filter:drop-shadow(0 1px 1px rgba(0,0,0,.12));
+}
+
+.nav-right{
+gap:10px!important;
+}
+
+.lang-btn,.nav-btn{
+width:46px!important;
+height:46px!important;
+border-radius:12px!important;
+}
+
+@media (max-width:768px){
+.logo img{
+height:40px!important;
+max-width:52px!important;
+transform:translateY(-1px)!important;
+}
+.lang-btn,.nav-btn{
+width:44px!important;
+height:44px!important;
+}
+}
+
+
+/* ETATIX OPTION A - WING ONLY NAVBAR */
+.logo{
+width:56px!important;
+min-width:56px!important;
+overflow:hidden!important;
+display:flex!important;
+align-items:center!important;
+justify-content:flex-start!important;
+}
+.logo img{
+height:48px!important;
+width:220px!important; /* keep original logo, crop text */
+max-width:none!important;
+object-fit:contain!important;
+object-position:left center!important;
+}
+.nav-right{gap:10px!important;}
+.lang-btn,.nav-btn{
+width:48px!important;
+height:48px!important;
+min-width:48px!important;
+}
+@media(max-width:768px){
+.logo{width:52px!important;min-width:52px!important;}
+.logo img{height:44px!important;width:200px!important;}
+.lang-btn,.nav-btn{width:44px!important;height:44px!important;min-width:44px!important;}
+}
+
+
+/* NAVBAR RE-LAYOUT PRO */
+.top{
+height:84px!important;
+padding:0 18px!important;
+display:flex!important;
+justify-content:space-between!important;
+align-items:center!important;
+}
+
+.logo{
+flex:1!important;
+width:auto!important;
+min-width:0!important;
+overflow:visible!important;
+display:flex!important;
+align-items:center!important;
+justify-content:flex-start!important;
+}
+
+.logo img{
+height:56px!important;
+width:auto!important;
+max-width:180px!important;
+object-fit:contain!important;
+object-position:left center!important;
+transform:none!important;
+filter:none!important;
+}
+
+.nav-right{
+display:flex!important;
+align-items:center!important;
+gap:8px!important;
+flex-shrink:0!important;
+}
+
+.lang-btn,.nav-btn{
+width:44px!important;
+height:44px!important;
+min-width:44px!important;
+padding:0!important;
+font-size:18px!important;
+}
+
+@media(max-width:768px){
+.top{
+height:78px!important;
+padding:0 12px!important;
+}
+.logo img{
+height:44px!important;
+max-width:130px!important;
+}
+.lang-btn,.nav-btn{
+width:42px!important;
+height:42px!important;
+min-width:42px!important;
+font-size:16px!important;
+}
+}
+
+
+/* ===== NAVBAR FINAL ARTATIX / LOKET ===== */
+.top{position:fixed;top:0;left:0;width:100%;height:96px;padding:0 20px;display:flex;justify-content:space-between;align-items:center;background:rgba(23,54,184,.95);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 10px 30px rgba(0,0,0,.18);z-index:999}
+.logo img{height:74px!important;width:auto!important;max-width:260px!important}
+.nav-right{display:flex;align-items:center;gap:12px}
+.lang-btn{height:48px;width:118px;border-radius:999px;font-weight:600}
+.nav-btn{width:48px;height:48px;border-radius:50%}
+.main{padding-top:96px}
+@media(max-width:768px){.top{height:92px;padding:0 16px}.logo img{height:68px!important;max-width:230px!important}.lang-btn{width:104px;height:46px}.nav-btn{width:46px;height:46px}.main{padding-top:92px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="logo"><img src="logo.png"/></div><div class="nav-right"><button class="lang-btn">🇮🇩 ID</button><button class="nav-btn">🔍</button><button class="nav-btn">☰</button></div></header>
+<div class="main">
+<div class="banner"><img alt="" src="banner.png"/></div>
+<div class="wrap">
+<div class="tag">🎵 Musik</div>
+<h1>BIGU FESTIVAL 2026</h1><div class="hero-stats"><div><b>2 Hari</b><br/>Festival</div><div><b>20+</b><br/>Talent</div><div><b>5 Tahun</b><br/>Perayaan</div></div>
+<div class="detail-card">
+<div class="item">📅 4–5 Juli 2026</div>
+<div class="item">🕒 14:00 - 23:00</div>
+<div class="item">📍Stadion Madya GBK Senayan Jakarta Selatan</div>
+</div>
+<h3 style="margin-top:30px">Penyelenggara</h3>
+<div class="talent">
+<img src="organizer1.jpg"/><div><b>Bigu Creative</b><br/>Official Organizer</div>
+</div>
+<div class="social">
+<a href="#">Instagram</a>
+<a href="#">TikTok</a>
+</div>
+<div class="tabs">
+<div class="tab active" onclick="showTab('deskripsi',this)">Deskripsi</div>
+<div class="tab" onclick="showTab('syarat',this)">Syarat &amp; Ketentuan</div>
+<div class="tab" onclick="showTab('talent',this)">Talent</div>
+<div class="tab" onclick="showTab('fasilitas',this)">Fasilitas</div>
+</div>
+<div class="tab-content active-content" id="deskripsi">
+<p>Deskripsi
+BIGU FESTIVAL 2026 adalah festival musik dan piknik terbesar persembahan Bigu Creative dengan tema 'Musik Sambil Piknik'. Acara berlangsung pada 4–5 Juli 2026 di Stadion Madya GBK Senayan Jakarta Selatan.
+
+DAY 1 menghadirkan Tulus, Rossa, HIVI!, Rizky Febian and Friends, Ghea Indrawari, Tenxi x Indahkus, Akujeje x Baila serta Special Show.
+
+DAY 2 menghadirkan Raisa, Rony Parulian, Nadin Amizah, Sal Priadi, Perunggu, Idgitaf, Feby Putri, Naykilla serta Special Show.
+
+Nikmati pengalaman konser outdoor yang dipadukan dengan area piknik, kuliner, aktivitas komunitas, dan berbagai kejutan spesial dalam perayaan 5 tahun Bigu Festival.</p>
+</div>
+<div class="tab-content" id="syarat">
+<ul>
+<li>Entry Pass yang valid adalah yang dibeli melalui artatix.co.id.</li>
+<li>Pembayaran Hanya di Artatix. Tidak ada pembayaran melalui rekening pribadi. Jika membayar ke rekening lainnya, maka diluar tanggungjawab Panitia dan Promotor.</li>
+<li>Setiap tiket berlaku untuk 1 (satu) orang dan tidak berlaku multiple entry (bolak balik) masuk ke area konser PVJ.</li>
+<li>Panitia dan Promotor tidak bertanggung jawab / tidak ada penggantian kerugian atas pembelian tiket acara melalui calo / tempat / kanal / platform yang bukan mitra resmi penjualan tiket.</li>
+<li>Tiket yang hilang / dicuri tidak akan diganti atau diterbitkan ulang. Meskipun anda memiliki bukti pembelian. Tiket kalian merupakan tanggung jawab kalian.</li>
+<li>Panitia acara, Promotor, dan Pengisi Acara tidak bertanggung jawab atas biaya transportasi atau akomodasi yang telah dikeluarkan penonton untuk mengunjungi acara jika seandainya acara harus dibatalkan atau dipindahkan ke hari dan atau waktu lain.</li>
+<li>Konser ini  tidak diperkenankan membawa balita. Usia menonton wajib diatas 10 tahun</li>
+<li>Dalam keadaan-keadaan kahar seperti bencana alam, kerusuhan, perang, wabah, dan semua keadaan darurat yang diumumkan secara resmi oleh Pemerintah. Panitia / penyelenggara / promotor berhak untuk membatalkan dan atau merubah waktu acara dan atau tata letak tempat tanpa pemberitahuan sebelumnya.</li>
+<li>Jika acara dibatalkan, Promotor harus mengembalikan uang pembelian tiket yang sudah dibeli dengan jangka waktu yang akan diinfokan lebih lanjut oleh Promotor, tetapi akan dipotong biaya bank, biaya lain-lain dan pembayaran lain yang mungkin dikenakan untuk mentransfer uang kembali ke pelanggan.</li>
+<li>Panitia / Penyelenggara / Promotor berhak untuk, merevisi waktu acara, tata letak tempat dan kapasitas penonton tanpa pemberitahuan sebelumnya.</li>
+<li>Panitia acara / penanggung jawab tempat acara, promotor, dan pengisi acara tidak bertanggung jawab atas hilangnya barang-barang pribadi para penonton atau kejadian-kejadian yang mengakibatkan cedera di semua area acara selama acara berlangsung, dengan alasan apapun.</li>
+<li>Harap membawa kartu ID fisik dan asli (KTP) dan e-Ticket dari artatix.co.id pada saat melakukan penukaran tiket.</li>
+<li>Kami menyarankan agar para penonton menggunakan transportasi online</li>
+<li>Melarang penonton masuk jika Entry Pass telah digunakan oleh orang lain.</li>
+<li>Promotor berhak untuk:
+ A. Melarang penonton masuk jika Entry Pass telah digunakan oleh orang lain.
+ B. Melarang penonton masuk ke area konser jika Entry Pass yang digunakan tidak valid.
+ C. Memproses atau mengajukan hukuman, baik perdata maupun pidana, terhadap pengunjung yang mendapatkan Entry Pass secara tidak sah, termasuk ditemukannya memalsukan dan menggandakan Entry Pass yang sah atau memperoleh Entry Pass dengan cara yang tidak sesuai dengan prosedur.</li>
+<li>Penyelenggara dapat mengambil tindakan tegas, dan berhak mengeluarkan pengunjung dari area konser jika tidak mematuhi protokol kesehatan yang telah diterapkan.</li>
+<li>Barang yang boleh dibawa ke dalam venue:
+ A. Kartu identitas, dompet dan uang pribadi
+ B. Bukti tiket / tanda masuk
+ C. Handbag
+ D. Masker dan hand sanitizer
+ E. Obat-obatan pribadi
+ F. Jas hujan 
+ G. Handphone / perangkat lainnya</li>
+<li>Barang yang tidak diperbolehkan dibawa ke dalam area konser:
+ A. Atribut / bendera / identitas dari kelompok sepak bola, politik, ras dan agama.
+ B. Makanan dan minuman dari luar ke dalam area konser.
+ C. Kamera profesional seperti Drone, SLR, DSLR dsb.
+ D. Tongsis atau Selfie Stick.
+ E. Payung.
+ F. Minuman beralkohol, obat-obatan terlarang, psikotropika, atau barang yang mengandung zat berbahaya lainnya. 
+ G. Senjata tajam / api, bahan peledak, dan benda-benda berbahaya lainnya yang dilarang menurut ketentuan peraturan perundang-undangan yang berlaku.
+ H. Cairan dan benda yang mudah terbakar.
+ I. Tas atau ransel berukuran besar.
+ J. Laser dan pointer.
+ K. Barang berbahaya yang dapat membahayakan orang lain maupun diri sendiri dalam bentuk apapun yang belum disebutkan pada peraturan diatas.</li>
+</ul>
+</div>
+<div class="tab-content" id="talent">
+<div class="talent"><img src="tulus.png"/><div>TULUS</div></div>
+<div class="talent"><img src="rossa.png"/><div>ROSSA</div></div>
+<div class="talent"><img src="hivi.png"/><div>HIVI!</div></div>
+<div class="talent"><img src="rizky.png"/><div>RIZKY FEBIAN AND FRIENDS</div></div>
+<div class="talent"><img src="bigu.png"/><div>FULL LINE UP BIGU FESTIVAL 2026</div></div>
+</div>
+<div class="tab-content" id="fasilitas">
+<div class="grid">
+<div class="fac">🍔 Food Court</div>
+<div class="fac">🕌 Musholla</div>
+<div class="fac">🚻 Toilet</div>
+<div class="fac">🅿 Area Parkir</div>
+<div class="fac">📷 Photo Booth</div>
+<div class="fac">➕ Pos Medis</div>
+</div>
+</div>
+</div>
+<div class="price-card">
+<a class="btn" href="tiket.html">🎫 BELI TIKET SEKARANG</a>
+</div>
+</div>
+<script>
+function showTab(id,el){
+document.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active-content'));
+document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+document.getElementById(id).classList.add('active-content');
+el.classList.add('active');
+}
+
+document.getElementById('scrollTopBtn')?.addEventListener('click',()=>{
+window.scrollTo({top:0,behavior:'smooth'});
+});
+
+document.querySelectorAll('a[href]').forEach(a=>{
+a.addEventListener('click',function(e){
+const href=this.getAttribute('href');
+if(!href || href.startsWith('#')) return;
+e.preventDefault();
+const p=document.getElementById('pageTransition');
+if(p) p.classList.add('show');
+setTimeout(()=>location.href=href,400);
+});
+});
+
+</script>
+<div class="page-footer-brand">
+<img alt="BIGU Festival" src="logo.png"/>
+</div>
+<div class="page-transition" id="pageTransition"></div>
+<button class="scroll-top" id="scrollTopBtn">↑</button>
+</body>
+</html>
+<!-- LINEUP DAY1: Tulus,Rossa,HIVI!,Rizky Febian and Friends,Ghea Indrawari; DAY2: Raisa,Rony Parulian,Nadin Amizah,Sal Priadi,Perunggu -->

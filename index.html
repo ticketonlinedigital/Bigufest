@@ -2,166 +2,85 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Sunset di Kebun</title>
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BIGU FESTIVAL 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-font-family:Arial,sans-serif
-}
-
-body{
-height:100vh;
-overflow:hidden;
-background:#000;
-}
-
-
-/* BACKGROUND MENGGUNAKAN logo.png */
-.hero{
-height:100vh;
-background:
-linear-gradient(90deg,rgba(0,0,0,.80),rgba(0,0,0,.35)),
-url("background.png");
-
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-
-display:flex;
-align-items:center;
-padding:28px;
-color:white;
-}
-
-
-.content{
-max-width:520px;
-z-index:2;
-}
-
-
-.brand{
-letter-spacing:3px;
-font-size:14px;
-margin-bottom:25px;
-opacity:.8;
-}
-
-
-h1{
-font-size:clamp(48px,12vw,80px);
-line-height:.9;
-margin-bottom:20px;
-}
-
-
-h1 span{
-color:#f5c451;
-}
-
-
-p{
-font-size:18px;
-line-height:1.5;
-margin-bottom:25px;
-}
-
-
-.promo{
-display:inline-block;
-background:white;
-color:#111;
-padding:12px 22px;
-border-radius:30px;
-font-weight:800;
-margin-bottom:25px;
-}
-
-
-.btn{
-display:inline-block;
-background:#fff;
-color:#111;
-text-decoration:none;
-padding:15px 35px;
-border-radius:14px;
-font-weight:800;
-transition:.3s;
-}
-
-
-.btn:hover{
-transform:scale(1.05);
-}
-
-
-@media(max-width:600px){
-
-.hero{
-text-align:center;
-justify-content:center;
-padding:20px;
-background-position:center;
-}
-
-.content{
-max-width:100%;
-}
-
-h1{
-font-size:55px;
-}
-
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+body{background:url('background.jpg') center/cover fixed;color:#fff}
+body:before{content:'';position:fixed;inset:0;background:linear-gradient(180deg,rgba(10,8,18,.72),rgba(10,8,18,.95));z-index:-1}
+.container{width:min(1200px,92%);margin:auto}
+.hero{text-align:center;padding:40px 0 90px}
+.logo{width:min(420px,90%)}
+.banner{width:100%;border-radius:32px;margin-top:25px;box-shadow:0 25px 80px rgba(0,0,0,.45)}
+h1{font-size:clamp(3rem,8vw,5.5rem);margin-top:25px}
+.sub{opacity:.85}
+.countdown{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin:35px 0}
+.box{background:rgba(255,255,255,.08);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.12);padding:18px;border-radius:24px;min-width:95px}
+.box span{font-size:2rem;font-weight:800}
+.btn{display:inline-block;padding:18px 38px;border-radius:999px;text-decoration:none;color:#fff;font-weight:700;background:linear-gradient(90deg,#b14cff,#ff79d1)}
+section{padding:70px 0}
+.title{text-align:center;margin-bottom:35px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.card{background:rgba(255,255,255,.08);padding:28px;border-radius:28px;border:1px solid rgba(255,255,255,.12)}
+.badge{display:inline-block;padding:7px 14px;border-radius:999px;background:rgba(177,76,255,.2);font-size:.8rem;font-weight:700}
+.price{font-size:3rem;font-weight:800;margin-top:10px}
+.poster{width:100%;border-radius:28px}
+footer{text-align:center;padding:60px 0 120px}
+footer img{width:220px}
+.sticky{position:fixed;left:0;right:0;bottom:0;padding:12px;background:rgba(15,10,20,.96);backdrop-filter:blur(10px)}
+.sticky a{display:block;text-align:center;padding:16px;border-radius:999px;background:linear-gradient(90deg,#b14cff,#ff79d1);text-decoration:none;color:#fff;font-weight:700}
 </style>
-
 </head>
-
-
 <body>
+<div class="container">
+<div class="hero">
+<img src="logo.png" class="logo">
+<img src="banner.png" class="banner">
+<h1>MUSIK SAMBIL PIKNIK</h1>
+<p class="sub">4–5 JULI 2026 • STADION MADYA GBK</p>
 
-
-<section class="hero">
-
-<div class="content">
-
-<div class="brand">
-BIGU FESTIVAL 2026
+<div class="countdown">
+<div class="box"><span id="d">0</span><br>Hari</div>
+<div class="box"><span id="h">0</span><br>Jam</div>
+<div class="box"><span id="m">0</span><br>Menit</div>
+<div class="box"><span id="s">0</span><br>Detik</div>
 </div>
 
-
-<h1>
-PICNIC<br>
-<span>5 SPECIAL 5 SHOW</span>
-</h1>
-
-
-<div class="promo">
-BUY 1 GET 1
+<a href="tiket.html" class="btn">BELI TIKET SEKARANG</a>
 </div>
 
-
-<p>
-Music Show with Green, Conservation and Culture Movement.<br>
-Nikmati pengalaman event bersama orang favoritmu.
-</p>
-
-
-<a class="btn" href="deskripsi.html">
-Pesan Tiket
-</a>
-
-
+<section>
+<div class="title"><h2>PILIH TIKET</h2></div>
+<div class="grid">
+<div class="card"><div class="badge">DAY 1</div><div class="price">310K</div></div>
+<div class="card"><div class="badge">PALING POPULER</div><div class="price">410K</div></div>
+<div class="card"><div class="badge">DAY 2</div><div class="price">310K</div></div>
 </div>
-
 </section>
 
+<section>
+<div class="title"><h2>OFFICIAL POSTER</h2></div>
+<img src="poster.png" class="poster">
+</section>
 
+<footer>
+<img src="logo.png">
+<h3>BIGU FESTIVAL 2026</h3>
+</footer>
+</div>
+
+<div class="sticky"><a href="tiket.html">BELI TIKET SEKARANG</a></div>
+
+<script>
+const target=new Date("2026-07-04T00:00:00").getTime();
+setInterval(()=>{
+const diff=target-Date.now();
+d.textContent=Math.max(0,Math.floor(diff/86400000));
+h.textContent=Math.max(0,Math.floor(diff/3600000)%24);
+m.textContent=Math.max(0,Math.floor(diff/60000)%60);
+s.textContent=Math.max(0,Math.floor(diff/1000)%60);
+},1000);
+</script>
 </body>
 </html>

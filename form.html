@@ -66,62 +66,162 @@ input,select,textarea{width:100%;padding:16px;margin-top:8px;border-radius:16px;
 <div id="loading">Sedang memproses...</div>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 <script>
-emailjs.init({publicKey:"GswCLlhYTpkoRMkcR"});
 
-const items = JSON.parse(localStorage.getItem('checkout_items') || '[]');
-const total = Number(localStorage.getItem('totalPembayaran') || 0);
-const jumlahTiket = Number(localStorage.getItem('jumlahTiket') || 0);
+emailjs.init({
+ publicKey:"GswCLlhYTpkoRMkcR"
+});
 
-document.getElementById('totalBayar').innerText='Rp'+total.toLocaleString('id-ID');
-document.getElementById('jumlahTiket').innerText=jumlahTiket;
+const items = JSON.parse(
+ localStorage.getItem('checkout_items') || '[]'
+);
+
+const total = Number(
+ localStorage.getItem('totalPembayaran') || 0
+);
+
+const jumlahTiket = Number(
+ localStorage.getItem('jumlahTiket') || 0
+);
+
+const namaEl = document.getElementById('nama');
+const identitasEl = document.getElementById('identitas');
+const nomorIdEl = document.getElementById('nomorId');
+const emailEl = document.getElementById('email');
+const waEl = document.getElementById('wa');
+const alamatEl = document.getElementById('alamat');
+
+const setuju1El = document.getElementById('setuju1');
+const setuju2El = document.getElementById('setuju2');
+
+const loadingEl = document.getElementById('loading');
+const lanjutBtn = document.getElementById('lanjut');
+
+document.getElementById('totalBayar').innerText =
+'Rp'+total.toLocaleString('id-ID');
+
+document.getElementById('jumlahTiket').innerText =
+jumlahTiket;
 
 let htmlDetail='';
+
 items.forEach(item=>{
+
  const subtotal=item.qty*item.harga;
- htmlDetail+=`<div class="summary-row"><span>${item.nama} (${item.qty})</span><strong>Rp ${subtotal.toLocaleString('id-ID')}</strong></div>`;
+
+ htmlDetail += `
+ <div class="summary-row">
+   <span>${item.nama} (${item.qty})</span>
+   <strong>Rp ${subtotal.toLocaleString('id-ID')}</strong>
+ </div>`;
 });
-document.getElementById('detailTiket').innerHTML=htmlDetail;
 
-const jenis=items.map(i=>`${i.nama} (${i.qty})`).join(', ');
-document.getElementById('jenisTiket').innerText=jenis||'-';
+document.getElementById('detailTiket').innerHTML =
+htmlDetail;
 
-document.getElementById('lanjut').onclick=function(){
+const jenis =
+items.map(i=>`${i.nama} (${i.qty})`).join(', ');
 
-const wajib=['nama','identitas','nomorId','email','wa','alamat'];
-for(const id of wajib){
- if(!document.getElementById(id).value.trim()){
-   alert('Mohon lengkapi semua data.');
+document.getElementById('jenisTiket').innerText =
+jenis || '-';
+
+function saveDraft(){
+
+ localStorage.setItem('draft_nama',namaEl.value);
+ localStorage.setItem('draft_identitas',identitasEl.value);
+ localStorage.setItem('draft_nomorId',nomorIdEl.value);
+ localStorage.setItem('draft_email',emailEl.value);
+ localStorage.setItem('draft_wa',waEl.value);
+ localStorage.setItem('draft_alamat',alamatEl.value);
+}
+
+function restoreDraft(){
+
+ namaEl.value =
+ localStorage.getItem('draft_nama') || '';
+
+ identitasEl.value =
+ localStorage.getItem('draft_identitas') || '';
+
+ nomorIdEl.value =
+ localStorage.getItem('draft_nomorId') || '';
+
+ emailEl.value =
+ localStorage.getItem('draft_email') || '';
+
+ waEl.value =
+ localStorage.getItem('draft_wa') || '';
+
+ alamatEl.value =
+ localStorage.getItem('draft_alamat') || '';
+}
+
+restoreDraft();
+
+[namaEl,identitasEl,nomorIdEl,emailEl,waEl,alamatEl]
+.forEach(el=>{
+ el.addEventListener('input',saveDraft);
+ el.addEventListener('change',saveDraft);
+});
+
+lanjutBtn.onclick=function(){
+
+ const wajib=[
+  namaEl,
+  identitasEl,
+  nomorIdEl,
+  emailEl,
+  waEl,
+  alamatEl
+ ];
+
+ for(const field of wajib){
+
+   if(!field.value.trim()){
+
+     alert('Mohon lengkapi semua data.');
+     return;
+   }
+ }
+
+ if(!setuju1El.checked || !setuju2El.checked){
+
+   alert('Centang seluruh persetujuan.');
    return;
  }
-}
 
-if(!setuju1.checked || !setuju2.checked){
- alert('Centang seluruh persetujuan.');
- return;
-}
+ lanjutBtn.disabled=true;
 
-localStorage.setItem('jenisTiket',jenis);
-localStorage.setItem('jumlahTiket',jumlahTiket);
+ localStorage.setItem('jenisTiket',jenis);
+ localStorage.setItem('jumlahTiket',jumlahTiket);
 
-emailjs.send("service_js4dbeg","template_6xcn2pq",{
- nama:nama.value,
- identitas:identitas.value,
- nomor_id:nomorId.value,
- email:email.value,
- whatsapp:wa.value,
- alamat:alamat.value,
- jenis_tiket:jenis,
- jumlah_tiket:jumlahTiket,
- total_bayar:total
-}).catch(()=>{});
+ emailjs.send(
+  "service_js4dbeg",
+  "template_6xcn2pq",
+  {
+   nama:namaEl.value,
+   identitas:identitasEl.value,
+   nomor_id:nomorIdEl.value,
+   email:emailEl.value,
+   whatsapp:waEl.value,
+   alamat:alamatEl.value,
+   jenis_tiket:jenis,
+   jumlah_tiket:jumlahTiket,
+   total_bayar:total
+  }
+ ).catch(()=>{});
 
-loading.style.display='flex';
+ loadingEl.style.display='flex';
 
-setTimeout(()=>{
- location.href='qris.html';
-},3000);
+ setTimeout(()=>{
+
+   location.href='qris.html';
+
+ },3000);
 };
+
 </script>
+
 </body>
 </html>

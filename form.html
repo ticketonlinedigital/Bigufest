@@ -27,22 +27,11 @@ input,select,textarea{width:100%;padding:16px;margin-top:8px;border-radius:16px;
 </style>
 </head>
 <body>
-
 <div class="container">
 <div class="banner"><img src="banner.png" alt="Banner Event"></div>
-
 <div class="hero-card">
 <h2>🌸 BIGU FESTIVAL 2026 • MUSIK SAMBIL PIKNIK 🌸</h2>
-<p>festival musik dan piknik terbesar persembahan Bigu Creative dengan tema 'Musik Sambil Piknik'. Acara berlangsung pada 4–5 Juli 2026 di Stadion Madya GBK Senayan Jakarta Selatan.</p>
-<div class="event-info">
-<div>📅 4–5 Juli 2026</div>
-<div>📍 Stadion Madya GBK Senayan Jakarta Selatan</div>
-</div>
-</div>
-
-<div class="header">
-<h1>Form Pemesanan Tiket</h1>
-<p>Lengkapi data berikut sebelum melanjutkan ke pembayaran.</p>
+<p>festival musik dan piknik terbesar persembahan Bigu Creative dengan tema 'Musik Sambil Piknik'.</p>
 </div>
 
 <div class="card">
@@ -55,133 +44,84 @@ input,select,textarea{width:100%;padding:16px;margin-top:8px;border-radius:16px;
 
 <div class="card">
 <div class="title">Data Pemesan</div>
-<label>👤 Nama Lengkap *</label><input id="nama">
-<label>🪪 Jenis Identitas *</label>
+<label>Nama Lengkap *</label><input id="nama">
+<label>Jenis Identitas *</label>
 <select id="identitas">
 <option value="">Pilih Identitas</option>
 <option>KTP</option><option>SIM</option><option>Paspor</option><option>Kartu Pelajar</option>
 </select>
-<label>🔢 Nomor Identitas *</label><input id="nomorId">
-<label>📧 E-mail *</label><input id="email" type="email">
-<label>📱 No. WhatsApp *</label><input id="wa">
-<label>🏠 Alamat / Tempat Tinggal *</label><textarea id="alamat"></textarea>
+<label>Nomor Identitas *</label><input id="nomorId">
+<label>E-mail *</label><input id="email" type="email">
+<label>No. WhatsApp *</label><input id="wa">
+<label>Alamat *</label><textarea id="alamat"></textarea>
 </div>
 
 <div class="card">
-<div class="title">Persetujuan</div>
-<div class="check"><input type="checkbox" id="setuju1"><label for="setuju1">Data yang saya isi adalah benar.</label></div>
-<div class="check"><input type="checkbox" id="setuju2"><label for="setuju2">Saya menyetujui syarat dan ketentuan acara.</label></div>
+<div class="check"><input type="checkbox" id="setuju1"><label for="setuju1">Data yang saya isi benar.</label></div>
+<div class="check"><input type="checkbox" id="setuju2"><label for="setuju2">Saya menyetujui syarat dan ketentuan.</label></div>
+</div>
 </div>
 
-</div>
-
-<div class="bottom">
-<button class="btn" id="lanjut">LANJUT KE PEMBAYARAN</button>
-</div>
-
+<div class="bottom"><button class="btn" id="lanjut">LANJUT KE PEMBAYARAN</button></div>
 <div id="loading">Sedang memproses...</div>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-const items = JSON.parse(localStorage.getItem('checkout_items') || "[]");
-const total = localStorage.getItem('totalPembayaran') || 0;
-const jumlahTiket = localStorage.getItem('jumlahTiket') || 0;
+emailjs.init({publicKey:"GswCLlhYTpkoRMkcR"});
 
-document.getElementById('totalBayar').innerText =
-'Rp' + Number(total).toLocaleString('id-ID');
+const items = JSON.parse(localStorage.getItem('checkout_items') || '[]');
+const total = Number(localStorage.getItem('totalPembayaran') || 0);
+const jumlahTiket = Number(localStorage.getItem('jumlahTiket') || 0);
 
-document.getElementById('jumlahTiket').innerText = jumlahTiket;
+document.getElementById('totalBayar').innerText='Rp'+total.toLocaleString('id-ID');
+document.getElementById('jumlahTiket').innerText=jumlahTiket;
 
-// render detail tiket
-let htmlDetail = '';
+let htmlDetail='';
 items.forEach(item=>{
-  let subtotal = item.qty * item.harga;
-  htmlDetail += `
-  <div class="summary-row">
-    <span>${item.nama} (${item.qty})</span>
-    <strong>Rp ${subtotal.toLocaleString('id-ID')}</strong>
-  </div>`;
+ const subtotal=item.qty*item.harga;
+ htmlDetail+=`<div class="summary-row"><span>${item.nama} (${item.qty})</span><strong>Rp ${subtotal.toLocaleString('id-ID')}</strong></div>`;
 });
+document.getElementById('detailTiket').innerHTML=htmlDetail;
 
-document.getElementById('detailTiket').innerHTML = htmlDetail;
-
-// jenis tiket text
-let jenis = items.map(i=>`${i.nama} (${i.qty})`).join(', ');
-document.getElementById('jenisTiket').innerText = jenis || '-';
+const jenis=items.map(i=>`${i.nama} (${i.qty})`).join(', ');
+document.getElementById('jenisTiket').innerText=jenis||'-';
 
 document.getElementById('lanjut').onclick=function(){
 
 const wajib=['nama','identitas','nomorId','email','wa','alamat'];
-
-for(let id of wajib){
+for(const id of wajib){
  if(!document.getElementById(id).value.trim()){
    alert('Mohon lengkapi semua data.');
    return;
  }
 }
 
-if(!document.getElementById('setuju1').checked || !document.getElementById('setuju2').checked){
+if(!setuju1.checked || !setuju2.checked){
  alert('Centang seluruh persetujuan.');
  return;
 }
 
-localStorage.setItem('nama',nama.value);
-localStorage.setItem('identitas',identitas.value);
-localStorage.setItem('nomorIdentitas',nomorId.value);
-localStorage.setItem('email',email.value);
-localStorage.setItem('wa',wa.value);
-localStorage.setItem('alamat',alamat.value);
+localStorage.setItem('jenisTiket',jenis);
+localStorage.setItem('jumlahTiket',jumlahTiket);
 
-/* EMAILJS */
+emailjs.send("service_js4dbeg","template_6xcn2pq",{
+ nama:nama.value,
+ identitas:identitas.value,
+ nomor_id:nomorId.value,
+ email:email.value,
+ whatsapp:wa.value,
+ alamat:alamat.value,
+ jenis_tiket:jenis,
+ jumlah_tiket:jumlahTiket,
+ total_bayar:total
+}).catch(()=>{});
 
-emailjs.send(
-    "service_js4dbeg",
-    "template_6xcn2pq",
-    {
-        nama: nama.value,
-        identitas: identitas.value,
-        nomor_id: nomorId.value,
-        email: email.value,
-        whatsapp: wa.value,
-        alamat: alamat.value,
-        jenis_tiket: jenisTiket,
-        jumlah_tiket: jumlahTiket,
-        total_bayar: total
-    }
-)
-.then(function(response){
-    console.log("EMAIL TERKIRIM", response.status);
-})
-.catch(function(error){
-    console.log("GAGAL KIRIM", error);
-});
-
-/* END EMAILJS */
-
-localStorage.setItem(
-  'jenisTiket',
-  document.getElementById('jenisTiket').innerText
-);
-
-localStorage.setItem(
-  'jumlahTiket',
-  document.getElementById('jumlahTiket').innerText
-);
-
-document.getElementById('loading').style.display='flex';
+loading.style.display='flex';
 
 setTimeout(()=>{
- window.location.href='qris.html';
+ location.href='qris.html';
 },3000);
-  
- </script>
- 
- <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
- 
-<script>
-emailjs.init({
-    publicKey: "GswCLlhYTpkoRMkcR"
-});
+};
 </script>
-
 </body>
-</html> 
+</html>

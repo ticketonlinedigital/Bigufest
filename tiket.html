@@ -4,14 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>RUANG RAYA - KARAWANG</title>
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
 font-family:Arial,sans-serif;
 background:linear-gradient(180deg,#13071d 0%,#1c0d29 50%,#13071d 100%);
 color:#fff;
 padding-bottom:110px
 }
+
 .hero::before{
 content:'';
 display:block;
@@ -20,13 +23,25 @@ height:220px;
 background:url('banner.png') center/cover no-repeat;
 border-radius:0 0 24px 24px;
 }
+
 .event-info{padding:22px 18px 10px}
 .event-info h1{font-size:22px;font-weight:900}
 .event-info h2{font-size:14px;color:#d8c9e8;margin-top:8px}
 .sub-title{font-size:18px;font-weight:800;margin-top:18px}
 .mini-title{font-size:13px;color:#cdb7df}
-.wrap{max-width:950px;margin:auto;padding:18px}
-.grid{display:grid;grid-template-columns:1fr;gap:18px}
+
+.wrap{
+max-width:950px;
+margin:auto;
+padding:18px
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr;
+gap:18px
+}
+
 .card{
 background:rgba(255,255,255,.08);
 backdrop-filter:blur(20px);
@@ -34,56 +49,158 @@ border:1px solid rgba(255,255,255,.08);
 border-radius:22px;
 padding:20px;
 }
-.ticket-card:hover{transform:translateY(-6px)}
-.badge{padding:8px 12px;border-radius:12px;font-size:11px;font-weight:700}
-.sold{background:#fee2e2;color:#b91c1c}
-.ready{background:#3b1f53;color:#ffb4f0}
-.low-stock{
-display:inline-block;margin-left:8px;
-background:#3b1f53;color:#ffb4f0;
-padding:6px 10px;border-radius:10px;font-size:11px
+
+.ticket-card:hover{
+transform:translateY(-6px)
 }
-.ticket-divider{border-top:2px dashed rgba(255,255,255,.15);margin:18px 0}
-.ticket-row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+
+.badge{
+padding:8px 12px;
+border-radius:12px;
+font-size:11px;
+font-weight:700
+}
+
+.sold{
+background:#fee2e2;
+color:#b91c1c
+}
+
+.ready{
+background:#3b1f53;
+color:#ffb4f0
+}
+
+.low-stock{
+display:inline-block;
+margin-left:8px;
+background:#3b1f53;
+color:#ffb4f0;
+padding:6px 10px;
+border-radius:10px;
+font-size:11px
+}
+
+.ticket-divider{
+border-top:2px dashed rgba(255,255,255,.15);
+margin:18px 0
+}
+
+.ticket-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:12px
+}
+
 .price{
 font-size:28px;
 font-weight:900;
 color:#FFB4F0;
 text-shadow:0 0 20px rgba(255,180,240,.35);
 }
+
 .select-btn,.btn{
 background:linear-gradient(135deg,#A74FFF,#FF8FE5);
-color:#fff;border:none;cursor:pointer;font-weight:800
+color:#fff;
+border:none;
+cursor:pointer;
+font-weight:800
 }
+
 .select-btn{
-width:150px;height:50px;border-radius:12px
+width:150px;
+height:50px;
+border-radius:12px
 }
-.qty.hidden{display:none}
-.qty{display:flex;gap:8px}
+
+.qty.hidden{
+display:none
+}
+
+.qty{
+display:flex;
+gap:8px
+}
+
 .qty button{
-width:42px;height:42px;border:none;border-radius:10px;
+width:42px;
+height:42px;
+border:none;
+border-radius:10px;
 background:linear-gradient(135deg,#A74FFF,#FF8FE5);
-color:#fff;font-size:20px
+color:#fff;
+font-size:20px
 }
-.qty input{width:55px;text-align:center;border-radius:10px;border:none}
-.full-logo{padding:20px;max-width:900px;margin:auto}
+
+.qty input{
+width:55px;
+text-align:center;
+border-radius:10px;
+border:none
+}
+
+.full-logo{
+padding:20px;
+max-width:900px;
+margin:auto
+}
+
 .full-logo img{
-width:100%;max-width:500px;display:block;margin:auto;
+width:100%;
+max-width:500px;
+display:block;
+margin:auto;
 filter:drop-shadow(0 0 30px rgba(255,143,229,.4));
 }
-.progress-wrap{margin-bottom:20px}
-.progress-text{font-size:12px;font-weight:700;color:#FFB4F0;margin-bottom:8px}
-.progress-bar{height:8px;background:rgba(255,255,255,.1);border-radius:50px;overflow:hidden}
-.progress-fill{height:100%;width:85%;background:linear-gradient(90deg,#A74FFF,#FF8FE5)}
+
+.progress-wrap{
+margin-bottom:20px
+}
+
+.progress-text{
+font-size:12px;
+font-weight:700;
+color:#FFB4F0;
+margin-bottom:8px
+}
+
+.progress-bar{
+height:8px;
+background:rgba(255,255,255,.1);
+border-radius:50px;
+overflow:hidden
+}
+
+.progress-fill{
+height:100%;
+width:85%;
+background:linear-gradient(90deg,#A74FFF,#FF8FE5)
+}
+
 .sticky{
-position:fixed;left:0;right:0;bottom:0;
+position:fixed;
+left:0;
+right:0;
+bottom:0;
 background:rgba(19,7,29,.92);
 backdrop-filter:blur(25px);
 padding:16px;
-display:flex;justify-content:space-between;align-items:center
+display:flex;
+justify-content:space-between;
+align-items:center
 }
-#total{font-size:26px;font-weight:900;color:#FFB4F0}
-.btn{padding:16px 24px;border-radius:14px}
+
+#total{
+font-size:26px;
+font-weight:900;
+color:#FFB4F0
+}
+
+.btn{
+padding:16px 24px;
+border-radius:14px
+}
 </style>
 </head>
 <body>
@@ -101,70 +218,108 @@ display:flex;justify-content:space-between;align-items:center
 
 <div class="progress-wrap">
 <div class="progress-text">85% TIKET TERJUAL</div>
-<div class="progress-bar"><div class="progress-fill"></div></div>
+<div class="progress-bar">
+<div class="progress-fill"></div>
+</div>
 </div>
 
 <div class="grid">
 
-<div class="card"><span class="badge sold">EARLY BIRD SOLD OUT</span></div>
+<div class="card">
+<span class="badge sold">EARLY BIRD SOLD OUT</span>
+</div>
 
 <div class="card ticket-card">
 <span class="badge ready">DAY 1 PASS</span>
 <span class="low-stock">HAMPIR HABIS</span>
+
 <h2>Normal Price</h2>
+
 <div class="ticket-divider"></div>
+
 <div class="ticket-row">
+
 <div class="price">Rp225.000</div>
-<button class="select-btn" onclick="showQty('q1',this)">Pilih Tiket</button>
+
+<button class="select-btn" onclick="showQty('q1',this)">
+Pilih Tiket
+</button>
+
 <div id="q1" class="qty hidden">
 <button onclick="chg('d1',-1)">−</button>
 <input id="d1" value="0" readonly>
 <button onclick="chg('d1',1)">+</button>
 </div>
+
 </div>
 </div>
 
 <div class="card ticket-card">
+
 <span class="badge ready">DAY 2 PASS</span>
+
 <h2>Normal Price</h2>
+
 <div class="ticket-divider"></div>
+
 <div class="ticket-row">
+
 <div class="price">Rp225.000</div>
-<button class="select-btn" onclick="showQty('q2',this)">Pilih Tiket</button>
+
+<button class="select-btn" onclick="showQty('q2',this)">
+Pilih Tiket
+</button>
+
 <div id="q2" class="qty hidden">
 <button onclick="chg('d2',-1)">−</button>
 <input id="d2" value="0" readonly>
 <button onclick="chg('d2',1)">+</button>
 </div>
+
 </div>
 </div>
 
 <div class="card ticket-card">
+
 <span class="badge ready">2 DAY PASS</span>
+
 <h2>Normal Price</h2>
+
 <div class="ticket-divider"></div>
+
 <div class="ticket-row">
+
 <div class="price">Rp395.000</div>
-<button class="select-btn" onclick="showQty('q3',this)">Pilih Tiket</button>
+
+<button class="select-btn" onclick="showQty('q3',this)">
+Pilih Tiket
+</button>
+
 <div id="q3" class="qty hidden">
 <button onclick="chg('pass',-1)">−</button>
 <input id="pass" value="0" readonly>
 <button onclick="chg('pass',1)">+</button>
 </div>
-</div>
-</div>
 
 </div>
 </div>
 
-<div class="full-logo"><img src="logo.png"></div>
+</div>
+</div>
+
+<div class="full-logo">
+<img src="logo.png" alt="BIGU FESTIVAL Logo">
+</div>
 
 <div class="sticky">
 <div>
 <div id="qtyText">Jumlah (0 tiket)</div>
 <div id="total">Rp 0</div>
 </div>
-<button class="btn" onclick="checkout()">BELI TIKET</button>
+
+<button class="btn" onclick="checkout()">
+BELI TIKET
+</button>
 </div>
 
 <script>
@@ -180,6 +335,7 @@ function showQty(id,btn){
 }
 
 function chg(id,v){
+
  const input=document.getElementById(id);
 
  let qty=parseInt(input.value)+v;
@@ -188,6 +344,7 @@ function chg(id,v){
  if(qty>10) qty=10;
 
  input.value=qty;
+
  updateTotal();
 }
 
@@ -218,20 +375,20 @@ function updateTotal(){
 
 function checkout(){
 
- const d1 = parseInt(document.getElementById('d1').value);
- const d2 = parseInt(document.getElementById('d2').value);
- const pass = parseInt(document.getElementById('pass').value);
+ const d1=parseInt(document.getElementById('d1').value);
+ const d2=parseInt(document.getElementById('d2').value);
+ const pass=parseInt(document.getElementById('pass').value);
 
- const totalQty = d1 + d2 + pass;
+ const totalQty=d1+d2+pass;
 
- if(totalQty < 1){
+ if(totalQty<1){
    alert('Pilih tiket terlebih dahulu');
    return;
  }
 
- const items = [];
+ const items=[];
 
- if(d1 > 0){
+ if(d1>0){
    items.push({
      nama:'DAY 1 PASS',
      qty:d1,
@@ -239,7 +396,7 @@ function checkout(){
    });
  }
 
- if(d2 > 0){
+ if(d2>0){
    items.push({
      nama:'DAY 2 PASS',
      qty:d2,
@@ -247,7 +404,7 @@ function checkout(){
    });
  }
 
- if(pass > 0){
+ if(pass>0){
    items.push({
      nama:'2 DAY PASS',
      qty:pass,
@@ -255,13 +412,45 @@ function checkout(){
    });
  }
 
- localStorage.setItem('checkout_items', JSON.stringify(items));
- localStorage.setItem('jumlahTiket', totalQty);
+ localStorage.setItem('checkout_items',JSON.stringify(items));
+ localStorage.setItem('jumlahTiket',totalQty);
 
  location.href='form.html';
 }
+
+function restoreData(){
+
+ const d1Val=parseInt(localStorage.getItem('day1_qty'))||0;
+ const d2Val=parseInt(localStorage.getItem('day2_qty'))||0;
+ const passVal=parseInt(localStorage.getItem('pass_qty'))||0;
+
+ document.getElementById('d1').value=d1Val;
+ document.getElementById('d2').value=d2Val;
+ document.getElementById('pass').value=passVal;
+
+ if(d1Val>0){
+   document.getElementById('q1').classList.remove('hidden');
+   const btn=document.querySelector('[onclick="showQty(\'q1\',this)"]');
+   if(btn) btn.style.display='none';
+ }
+
+ if(d2Val>0){
+   document.getElementById('q2').classList.remove('hidden');
+   const btn=document.querySelector('[onclick="showQty(\'q2\',this)"]');
+   if(btn) btn.style.display='none';
+ }
+
+ if(passVal>0){
+   document.getElementById('q3').classList.remove('hidden');
+   const btn=document.querySelector('[onclick="showQty(\'q3\',this)"]');
+   if(btn) btn.style.display='none';
+ }
+
+ updateTotal();
+}
+
+restoreData();
 </script>
 
 </body>
 </html>
- 

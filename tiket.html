@@ -168,38 +168,66 @@ display:flex;justify-content:space-between;align-items:center
 </div>
 
 <script>
-const prices={entry:175000,festival:230000};
-const names={entry:'EARLY BIRD - Early Entry',festival:'EARLY BIRD - Festival'};
+const harga = {
+ d1:225000,
+ d2:225000,
+ pass:395000
+};
 
-function chg(type,v){
- const input=document.getElementById('qty-'+type);
- let q=parseInt(input.value)+v;
- if(q<0)q=0;
- if(q>10)q=10;
- input.value=q;
+function showQty(id,btn){
+ document.getElementById(id).classList.remove('hidden');
+ btn.style.display='none';
+}
+
+function chg(id,v){
+ const input=document.getElementById(id);
+
+ let qty=parseInt(input.value)+v;
+
+ if(qty<0) qty=0;
+ if(qty>10) qty=10;
+
+ input.value=qty;
  updateTotal();
 }
 
 function updateTotal(){
- const qEntry=parseInt(document.getElementById('qty-entry').value);
- const qFestival=parseInt(document.getElementById('qty-festival').value);
 
- const totalQty=qEntry+qFestival;
- const total=(qEntry*prices.entry)+(qFestival*prices.festival);
+ const d1=parseInt(document.getElementById('d1').value);
+ const d2=parseInt(document.getElementById('d2').value);
+ const pass=parseInt(document.getElementById('pass').value);
 
- document.getElementById('jml').innerText='Jumlah ('+totalQty+' tiket)';
- document.getElementById('total').innerText='Rp '+total.toLocaleString('id-ID');
+ const totalQty=d1+d2+pass;
 
- localStorage.setItem('ticket_entry_qty',qEntry);
- localStorage.setItem('ticket_festival_qty',qFestival);
+ const total=
+ (d1*harga.d1)+
+ (d2*harga.d2)+
+ (pass*harga.pass);
+
+ document.getElementById('qtyText').innerText=
+ 'Jumlah ('+totalQty+' tiket)';
+
+ document.getElementById('total').innerText=
+ 'Rp '+total.toLocaleString('id-ID');
+
+ localStorage.setItem('day1_qty',d1);
+ localStorage.setItem('day2_qty',d2);
+ localStorage.setItem('pass_qty',pass);
  localStorage.setItem('totalPembayaran',total);
 }
 
 function checkout(){
- const totalQty=parseInt(document.getElementById('qty-entry').value)+parseInt(document.getElementById('qty-festival').value);
- if(totalQty<1){alert('Pilih tiket terlebih dahulu');return;}
+
+ const totalQty=
+ parseInt(document.getElementById('d1').value)+
+ parseInt(document.getElementById('d2').value)+
+ parseInt(document.getElementById('pass').value);
+
+ if(totalQty<1){
+   alert('Pilih tiket terlebih dahulu');
+   return;
+ }
+
  location.href='form.html';
 }
 </script>
-
-</body></html>

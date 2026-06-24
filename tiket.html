@@ -87,77 +87,85 @@ display:flex;justify-content:space-between;align-items:center
 </style>
 </head>
 <body>
-<header class="header"><div class="wrap"><img src="logo.png" class="logo"></div></header>
 
-<div class="stepper">
-<div class="steps"><div class="c active">1</div><div class="l"></div><div class="c">2</div><div class="l"></div><div class="c">3</div><div class="l"></div><div class="c">4</div></div>
+<div class="hero"></div>
+
+<div class="event-info">
+<h1>BIGU FESTIVAL 2026 • MUSIK SAMBIL PIKNIK</h1>
+<h2>4–5 JULI 2026 • STADION MADYA GBK</h2>
+<div class="sub-title">Tiket Resmi</div>
+<div class="mini-title">Pilih Tiket Festival</div>
 </div>
 
-<div class="hero"><img src="banner.png"></div>
-<div class="event">RUANG RAYA - KARAWANG</div>
+<div class="wrap">
 
-
-<div class="section">
-
-<div class="new-title">🎟️ TIKET TAMBAHAN RESMI TELAH DIBUKA — PILIH KATEGORI TIKET ANDA</div>
-
-<div class="card">
-<h2>EARLY BIRD - Early Entry</h2>
-<p><b>KATEGORI TIKET TAMBAHAN</b></p>
-<div class="meta"><span class="badge">TERSEDIA</span><span>Penjualan berakhir: <b>21 Jun 2026 • 23:59</b></span></div>
-
-<ul style="margin-left:18px;line-height:1.8">
-<li>Harga belum termasuk pajak dan biaya platform</li>
-<li>Wajib masuk sebelum pukul 15:00</li>
-<li>Datang di atas pukul 15:00, tiket dinyatakan hangus</li>
-</ul>
-
-<div class="price">
-Rp 175.000 <span class="old-price">Rp 300.000</span>
-<span class="discount">-41.67%</span>
+<div class="progress-wrap">
+<div class="progress-text">85% TIKET TERJUAL</div>
+<div class="progress-bar"><div class="progress-fill"></div></div>
 </div>
 
-<div class="qty">
-<button onclick="chg('entry',-1)">−</button>
-<input id="qty-entry" value="0" readonly>
-<button onclick="chg('entry',1)">+</button>
+<div class="grid">
+
+<div class="card"><span class="badge sold">EARLY BIRD SOLD OUT</span></div>
+
+<div class="card ticket-card">
+<span class="badge ready">DAY 1 PASS</span>
+<span class="low-stock">HAMPIR HABIS</span>
+<h2>Normal Price</h2>
+<div class="ticket-divider"></div>
+<div class="ticket-row">
+<div class="price">Rp225.000</div>
+<button class="select-btn" onclick="showQty('q1',this)">Pilih Tiket</button>
+<div id="q1" class="qty hidden">
+<button onclick="chg('d1',-1)">−</button>
+<input id="d1" value="0" readonly>
+<button onclick="chg('d1',1)">+</button>
 </div>
-</div>
-
-<div class="card">
-<h2>EARLY BIRD - Festival</h2>
-<p><b>KATEGORI TIKET TAMBAHAN</b></p>
-<div class="meta"><span class="badge">TERSEDIA</span><span>Penjualan berakhir: <b>21 Jun 2026 • 23:59</b></span></div>
-
-<ul style="margin-left:18px;line-height:1.8">
-<li>Harga belum termasuk pajak dan biaya platform</li>
-</ul>
-
-<div class="price">Rp 230.000</div>
-
-<div class="qty">
-<button onclick="chg('festival',-1)">−</button>
-<input id="qty-festival" value="0" readonly>
-<button onclick="chg('festival',1)">+</button>
 </div>
 </div>
 
+<div class="card ticket-card">
+<span class="badge ready">DAY 2 PASS</span>
+<h2>Normal Price</h2>
+<div class="ticket-divider"></div>
+<div class="ticket-row">
+<div class="price">Rp225.000</div>
+<button class="select-btn" onclick="showQty('q2',this)">Pilih Tiket</button>
+<div id="q2" class="qty hidden">
+<button onclick="chg('d2',-1)">−</button>
+<input id="d2" value="0" readonly>
+<button onclick="chg('d2',1)">+</button>
+</div>
+</div>
 </div>
 
-
-<div class="footer">
-<img src="logo.png" class="logo"><br><br>
-© 2026 LOKET. Hak cipta dilindungi Undang-undang
+<div class="card ticket-card">
+<span class="badge ready">2 DAY PASS</span>
+<h2>Normal Price</h2>
+<div class="ticket-divider"></div>
+<div class="ticket-row">
+<div class="price">Rp395.000</div>
+<button class="select-btn" onclick="showQty('q3',this)">Pilih Tiket</button>
+<div id="q3" class="qty hidden">
+<button onclick="chg('pass',-1)">−</button>
+<input id="pass" value="0" readonly>
+<button onclick="chg('pass',1)">+</button>
 </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="full-logo"><img src="logo.png"></div>
 
 <div class="sticky">
 <div>
-<div id="jml">Jumlah (0 tiket)</div>
-<div id="total" style="font-size:24px;font-weight:800">Rp 0</div>
+<div id="qtyText">Jumlah (0 tiket)</div>
+<div id="total">Rp 0</div>
 </div>
-<button class="btn" onclick="checkout()">Pesan Sekarang</button>
+<button class="btn" onclick="checkout()">BELI TIKET</button>
 </div>
-
 
 <script>
 const prices={entry:175000,festival:230000};

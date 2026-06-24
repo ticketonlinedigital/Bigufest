@@ -62,50 +62,126 @@ button.active{background:#22c55e;color:#fff}
 </div>
 
 <script>
-document.getElementById("jenisTiket").textContent=localStorage.getItem("jenisTiket")||"-";
-document.getElementById("jumlahTiket").textContent=localStorage.getItem("jumlahTiket")||"0";
-document.getElementById("totalBayar").textContent=new Intl.NumberFormat('id-ID').format(localStorage.getItem("totalPembayaran")||localStorage.getItem("total_bayar")||0);
 
-let totalSeconds=60;
-const timer=document.getElementById("timer");
+document.getElementById("jenisTiket").textContent =
+localStorage.getItem("jenisTiket") || "-";
+
+document.getElementById("jumlahTiket").textContent =
+localStorage.getItem("jumlahTiket") || "0";
+
+document.getElementById("totalBayar").textContent =
+new Intl.NumberFormat('id-ID').format(
+localStorage.getItem("totalPembayaran") ||
+localStorage.getItem("total_bayar") ||
+0
+);
+
+let totalSeconds = 60;
+
+const timer = document.getElementById("timer");
+const warning = document.getElementById("warning");
+const agree = document.getElementById("agree");
+const btn = document.getElementById("confirmBtn");
+const proofFile = document.getElementById("proofFile");
+const loading = document.getElementById("loading");
+const bar = document.getElementById("bar");
+
 function draw(){
-let m=Math.floor(totalSeconds/60),s=totalSeconds%60;
-timer.textContent=String(m).padStart(2,'0')+":"+String(s).padStart(2,'0');
+
+ if(totalSeconds < 0){
+   totalSeconds = 0;
+ }
+
+ let m = Math.floor(totalSeconds/60);
+ let s = totalSeconds%60;
+
+ timer.textContent =
+ String(m).padStart(2,'0') +
+ ":" +
+ String(s).padStart(2,'0');
 }
+
 draw();
 
-const cd=setInterval(()=>{
-totalSeconds--;
-draw();
-if(totalSeconds===15) document.getElementById("warning").style.display="block";
-if(totalSeconds<=10) timer.style.color="#ff4444";
-if(totalSeconds<=0){clearInterval(cd);location.href="failed.html";}
+const cd = setInterval(()=>{
+
+ totalSeconds--;
+
+ draw();
+
+ if(totalSeconds === 15){
+   warning.style.display = "block";
+ }
+
+ if(totalSeconds <= 10){
+   timer.style.color = "#ff4444";
+ }
+
+ if(totalSeconds <= 0){
+
+   clearInterval(cd);
+
+   location.href = "failed.html";
+ }
+
 },1000);
 
-const agree=document.getElementById("agree");
-const btn=document.getElementById("confirmBtn");
-agree.onchange=()=>{
-btn.disabled=!agree.checked;
-btn.classList.toggle("active",agree.checked);
+agree.onchange = ()=>{
+
+ btn.disabled = !agree.checked;
+
+ btn.classList.toggle(
+  "active",
+  agree.checked
+ );
 };
 
-btn.onclick=()=>{
-if(document.getElementById("proofFile").files.length===0){
-alert("Upload bukti pembayaran terlebih dahulu.");
-return;
-}
-clearInterval(cd);
-document.getElementById("loading").style.display="flex";
-let p=0;
-const iv=setInterval(()=>{
-p++;
-document.getElementById("bar").style.width=p+"%";
-if(p>=100){
-clearInterval(iv);
-location.href="success.html";
-}
-},1200);
+btn.onclick = ()=>{
+
+ if(proofFile.files.length === 0){
+
+   alert(
+    "Upload bukti pembayaran terlebih dahulu."
+   );
+
+   return;
+ }
+
+ const file = proofFile.files[0];
+
+ if(file.size > 10 * 1024 * 1024){
+
+   alert(
+    "Ukuran file maksimal 10MB."
+   );
+
+   return;
+ }
+
+ btn.disabled = true;
+
+ clearInterval(cd);
+
+ loading.style.display = "flex";
+
+ let p = 0;
+
+ const iv = setInterval(()=>{
+
+   p++;
+
+   bar.style.width = p + "%";
+
+   if(p >= 100){
+
+     clearInterval(iv);
+
+     location.href = "success.html";
+   }
+
+ },1200);
 };
+
 </script>
 </body>
 </html>

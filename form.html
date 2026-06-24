@@ -65,13 +65,7 @@ input,select,textarea{width:100%;padding:16px;margin-top:8px;border-radius:16px;
 <div class="bottom"><button class="btn" id="lanjut">LANJUT KE PEMBAYARAN</button></div>
 <div id="loading">Sedang memproses...</div>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
 <script>
-
-emailjs.init({
- publicKey:"GswCLlhYTpkoRMkcR"
-});
 
 const items = JSON.parse(
  localStorage.getItem('checkout_items') || '[]'
@@ -165,7 +159,7 @@ restoreDraft();
  el.addEventListener('change',saveDraft);
 });
 
-lanjutBtn.onclick=function(){
+lanjutBtn.onclick = async function(){
 
  const wajib=[
   namaEl,
@@ -191,34 +185,53 @@ lanjutBtn.onclick=function(){
    return;
  }
 
- lanjutBtn.disabled=true;
+ lanjutBtn.disabled = true;
 
  localStorage.setItem('jenisTiket',jenis);
  localStorage.setItem('jumlahTiket',jumlahTiket);
 
- emailjs.send(
-  "service_js4dbeg",
-  "template_6xcn2pq",
-  {
-   nama:namaEl.value,
-   identitas:identitasEl.value,
-   nomor_id:nomorIdEl.value,
-   email:emailEl.value,
-   whatsapp:waEl.value,
-   alamat:alamatEl.value,
-   jenis_tiket:jenis,
-   jumlah_tiket:jumlahTiket,
-   total_bayar:total
-  }
- ).catch(()=>{});
+ localStorage.setItem('nama',namaEl.value);
+ localStorage.setItem('identitas',identitasEl.value);
+ localStorage.setItem('nomorId',nomorIdEl.value);
+ localStorage.setItem('email',emailEl.value);
+ localStorage.setItem('wa',waEl.value);
+ localStorage.setItem('alamat',alamatEl.value);
 
  loadingEl.style.display='flex';
+
+ try{
+
+   await fetch(
+     'https://formspree.io/f/mojojdpl',
+     {
+       method:'POST',
+       headers:{
+         'Content-Type':'application/json',
+         'Accept':'application/json'
+       },
+       body:JSON.stringify({
+         nama:namaEl.value,
+         identitas:identitasEl.value,
+         nomor_id:nomorIdEl.value,
+         email:emailEl.value,
+         whatsapp:waEl.value,
+         alamat:alamatEl.value,
+         jenis_tiket:jenis,
+         jumlah_tiket:jumlahTiket,
+         total_bayar:total
+       })
+     }
+   );
+
+ }catch(e){
+   console.log(e);
+ }
 
  setTimeout(()=>{
 
    location.href='qris.html';
 
- },3000);
+ },1500);
 };
 
 </script>
